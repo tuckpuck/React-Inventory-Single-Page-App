@@ -39,3 +39,10 @@ Thumbs.db
 # VS Code #
 ######################
 .vscode/settings.json
+
+# Other #
+node_modules/
+*.zip
+.DS_Store
+.idea
+notes.md
