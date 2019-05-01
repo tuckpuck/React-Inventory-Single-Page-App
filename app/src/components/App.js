@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-// import Order from "./Order";
+import Order from "./Order";
 import Inventory from "./Inventory";
 
 class App extends React.Component {
@@ -10,7 +10,7 @@ class App extends React.Component {
             <div className="menu">
                 <Header/>
             </div>
-                {/* <Order/> */}
+                <Order/>
                 <Inventory/>
         </div>
         )
