@@ -1,6 +1,11 @@
 import React from 'react';
 
 class AddFishForm extends React.Component {
+    createFish = (event) => {
+        event.preventDefault();
+        alert("making a fish 🐟");
+    }
+
     render() {
         return (
             <form className="fish-edit" onSubmit={this.createFish}>
