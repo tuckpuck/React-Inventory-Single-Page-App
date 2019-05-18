@@ -46,3 +46,7 @@ node_modules/
 .DS_Store
 .idea
 notes.md
+
+# JS Files  #
+######################
+base.js
