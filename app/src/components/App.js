@@ -20,6 +20,16 @@ class App extends React.Component {
         });
     }
 
+    componentDidUpdate() {
+        // Update order in local storage
+        console.log(this.state.order);
+        localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
+    }
+
+    componentWillUnmount() {
+        base.removeBinding(this.ref);
+    }
+
     addFish = (fish) => {
         // Make copy of existing state
         const fishes = { ...this.state.fishes };
