@@ -22,7 +22,7 @@ class App extends React.Component {
         } else {
             this.setState({ order: {} });
         }
-        
+
         this.ref = base.syncState(`${params.storeId}/fishes`, {
             context: this,
             state: 'fishes'
@@ -49,6 +49,15 @@ class App extends React.Component {
         });
     };
 
+    updateFish = (key, updatedFish) => {
+        // Take a copy of current state
+        const fishes = { ...this.state.fishes };
+        // Update that state
+        fishes[key] = updatedFish;
+        // Set that to state
+        this.setState({ fishes });
+    };
+
     loadSampleFishes = () => {
         this.setState({
             fishes: sampleFishes
@@ -71,17 +80,12 @@ class App extends React.Component {
                     <Header tagline="Fresh Seafood Market" />
                     <ul className="fishes">
                         {Object.keys(this.state.fishes).map((key) => (
-                            <Fish
-                                key={key}
-                                index={key}
-                                details={this.state.fishes[key]}
-                                addToOrder={this.addToOrder}
-                            />
+                            <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder} />
                         ))}
                     </ul>
                 </div>
                 <Order fishes={this.state.fishes} order={this.state.order} />
-                <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} />
+                <Inventory addFish={this.addFish} updateFish={this.updateFish} loadSampleFishes={this.loadSampleFishes} fishes={this.state.fishes} />
             </div>
         );
     }
