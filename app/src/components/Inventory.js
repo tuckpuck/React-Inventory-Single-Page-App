@@ -15,6 +15,7 @@ class Inventory extends React.Component {
   };
   
     render() {
+        return <Login/>;
         return (
             <div className="Inventory">
                 <h2>Inventory</h2>
