@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from "prop-types";
 import AddFishForm from './AddFishForm';
 import EditFishForm from './EditFishForm';
+import Login from './Login';
+
 
 class Inventory extends React.Component {
       static propTypes = {
