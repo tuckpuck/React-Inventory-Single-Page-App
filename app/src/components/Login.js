@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PropType from 'prop-types';
+
 
 const Login = (props) => (
     <nav className="login">
