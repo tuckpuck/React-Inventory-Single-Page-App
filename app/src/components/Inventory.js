@@ -13,9 +13,13 @@ class Inventory extends React.Component {
     loadSampleFishes: PropTypes.func,
     addFish: PropTypes.func
   };
+
+  authenticate = (provider) => {
+      alert(provider);
+  }
   
     render() {
-        return <Login/>;
+        return <Login authenticate={this.authenticate} />;
         return (
             <div className="Inventory">
                 <h2>Inventory</h2>
