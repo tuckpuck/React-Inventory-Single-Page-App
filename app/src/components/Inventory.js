@@ -4,8 +4,7 @@ import firebase from 'firebase';
 import AddFishForm from './AddFishForm';
 import EditFishForm from './EditFishForm';
 import Login from './Login';
-import {firebaseApp} from "../base";
-
+import base, { firebaseApp } from "../base";
 
 
 class Inventory extends React.Component {
@@ -17,8 +16,27 @@ class Inventory extends React.Component {
     addFish: PropTypes.func
   };
 
+  state = {
+    uid: null,
+    owner: null
+  }
+
   authHandler = async(authData) => {
-      console.log(authData);
+    // Look up the current store in the Firebase database
+    const store = await base.fetch(this.props.storeId, {context: this});
+    console.log(store);
+    // Claim it if there is no owner
+    if (!store.owner) {
+        // save it as our own
+        await base.post(`${this.props.storeId}/owner`, {
+          data: authData.user.uid
+        })
+    }
+    // Set the state of the inventory component to reflect the current user
+    this.setState({
+      uid: authData.user.uid,
+      owner: store.owner || authData.user.uid
+    })
   }
 
   authenticate = (provider) => {
@@ -27,7 +45,19 @@ class Inventory extends React.Component {
   }
   
     render() {
-        return <Login authenticate={this.authenticate} />;
+      // Check if they are logged in
+      if (!this.state.uid) {
+          return <Login authenticate={this.authenticate} />;
+      }
+
+      // Check if they are not the owner of store
+      if(this.state.uid !== this.state.owner){
+        return <div>
+          <p>Sorry, you are not the owner</p>
+        </div>
+      }
+
+      // They must be owner, render the inventory"
         return (
             <div className="Inventory">
                 <h2>Inventory</h2>
