@@ -53,7 +53,7 @@ base.js
 
 # Build Files  #
 ######################
-app/build
+build
 
 # Deployment Files  #
 ######################
