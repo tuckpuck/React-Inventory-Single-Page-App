@@ -58,3 +58,4 @@ app/build
 # Deployment Files  #
 ######################
 now.json
+.netlify
