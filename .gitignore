@@ -47,7 +47,6 @@ node_modules/
 .idea
 notes.md
 
-
 # JS Files  #
 ######################
 base.js
@@ -55,3 +54,7 @@ base.js
 # Build Files  #
 ######################
 app/build
+
+# Deployment Files  #
+######################
+now.json
