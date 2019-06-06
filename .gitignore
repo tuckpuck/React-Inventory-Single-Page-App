@@ -38,6 +38,7 @@ Thumbs.db
 
 # VS Code #
 ######################
+.vscode
 .vscode/settings.json
 
 # Other #
@@ -47,6 +48,11 @@ node_modules/
 .idea
 notes.md
 
+
 # JS Files  #
 ######################
 base.js
+
+# Build Files  #
+######################
+app/build
